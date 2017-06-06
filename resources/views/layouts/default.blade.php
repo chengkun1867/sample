@@ -1,45 +1,17 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>@yield('title','Sample App') - chengkun 入门教程</title>
+  <head>
+    <title>@yield('title', 'Sample App') - Laravel 入门教程</title>
+    <link rel="stylesheet" href="/css/app.css">
+  </head>
+  <body>
+    @include('layouts._header')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">@yield('content')</div>
-
-            </div>
-        </div>
-    </body>
+    <div class="container">
+      <div class="col-md-offset-1 col-md-10">
+        @yield('content')
+        @include('layouts._footer')
+      </div>
+    </div>
+  </body>
 </html>
