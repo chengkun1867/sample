@@ -18,8 +18,10 @@ class UsersController extends Controller
     }
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        return view('users.show', compact('user'));
+
+       $user = User::findOrFail($id);
+       return view('users.show', compact('user'));
+
     }
     public function store(Request $request)
     {
@@ -29,6 +31,7 @@ class UsersController extends Controller
             'password' => 'required|confirmed|min:6'
         ]);
 
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -36,5 +39,15 @@ class UsersController extends Controller
         ]);
         session()->flash('success', '欢迎，您将在这里开启一段新的旅程~');
         return redirect()->route('users.show', [$user]);
+
+        $user=User::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>bcrypt($request->password),
+        ]);
+
+        session()->flash('success', '欢迎，您将在这里开启一段新的旅程~');
+        return redirect()->route('users.show',[$user]);
+
     }
 }
